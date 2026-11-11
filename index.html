@@ -6299,7 +6299,7 @@ body.D04Z_pdf-cap #D04Z_app .D04Z_res-col + .D04Z_res-col{border-left:1px solid 
 	border-right-color: #fff;}
 @media print{#Jal_app .leaflet-control{-webkit-print-color-adjust: exact;
 		print-color-adjust: exact;}}
-/* Jal_ · Mapa seccional de Jalisco 2D/3D (2026-11-10.J2): clon del mapa 3D del Distrito 4 (M5), encapsulado en #Jal_app */
+/* Jal_ · Mapa seccional de Jalisco 2D/3D (2026-11-10.J3): clon del mapa 3D del Distrito 4 (M5), encapsulado en #Jal_app */
 :root{
   --Jal_lienzo:#F2F4EE;--Jal_panel:#FFFFFF;--Jal_panel2:#D8DED1;--Jal_panel3:#B8C2AD;
   --Jal_filete:#9EAE99;--Jal_tinta:#24332A;--Jal_tinta2:#32483B;--Jal_tinta3:#597460;
@@ -6926,6 +6926,16 @@ body.Jal_pdf-cap #Jal_app .Jal_res-col + .Jal_res-col{border-left:1px solid var(
 #Jal_app .Jal_btn-off{opacity:.55;cursor:not-allowed}
 #Jal_app .Jal_ctrl-int select#Jal_sel-terr{min-width:210px;max-width:280px}
 
+</style>
+<style>
+/* J3 · sedes del motor Jal_: en las pestañas de distrito sustituye al mapa plano, su ficha y sus casillas */
+#D10Z_app #D10Z_v-mapa > .D10Z_panel:not(#D10Z_hist-panel){display:none !important}
+#D04Z_app #D04Z_v-mapa > .D04Z_panel{display:none !important}
+#Jal_app.Jal_en-sede .Jal_cab,#Jal_app.Jal_en-sede #Jal_pie,#Jal_app.Jal_en-sede .Jal_campo:has(#Jal_sel-terr){display:none}
+#Jal_app.Jal_en-sede[data-jal_sede="D10Z"] #Jal_hist-panel{display:none}
+#D10Z_app:has(#D10Z_v-mapa:not([hidden])) .D10Z_ctrl,#D04Z_app:has(#D04Z_v-mapa:not([hidden])) .D04Z_ctrl{display:none}
+#Jal_app.Jal_en-sede{margin:0 0 18px;border-radius:14px;overflow:clip}
+#Jal_app.Jal_en-sede .Jal_main{padding-left:0;padding-right:0}
 </style>
 </head>
 
@@ -8265,6 +8275,8 @@ body.Jal_pdf-cap #Jal_app .Jal_res-col + .Jal_res-col{border-left:1px solid var(
 
     <!-- ============ MAPA ============ -->
     <section class="D10Z_vista" id="D10Z_v-mapa" role="tabpanel" aria-labelledby="D10Z_t-mapa" hidden>
+      <!-- J3 · sede del motor 2D/3D (módulo Jal_), fijo en este distrito -->
+      <div class="Jal_sede" id="Jal_sede-D10Z"></div>
       <div class="D10Z_panel">
         <h2>Mapa seccional de Zapopan</h2>
         <p class="D10Z_nota">El Distrito 10 va coloreado y con borde grueso; los distritos 4, 6 y 12 quedan en gris como contexto. Cartografía seccional incrustada en la página Electoral (marco geográfico posterior a 2024). Las teselas de OpenStreetMap requieren conexión; sin ella se ven solo los polígonos.</p>
@@ -8854,6 +8866,8 @@ body.Jal_pdf-cap #Jal_app .Jal_res-col + .Jal_res-col{border-left:1px solid var(
 
     <!-- ============ MAPA ============ -->
     <section class="D04Z_vista" id="D04Z_v-mapa" role="tabpanel" aria-labelledby="D04Z_t-mapa" hidden>
+      <!-- J3 · sede del motor 2D/3D (módulo Jal_), fijo en este distrito -->
+      <div class="Jal_sede" id="Jal_sede-D04Z"></div>
       <div class="D04Z_panel">
         <h2>Mapa seccional de Zapopan</h2>
         <p class="D04Z_nota">El Distrito 4 va coloreado y con borde grueso; los distritos 6, 10 y 12 quedan en gris como contexto. Cartografía seccional incrustada en la página Electoral (marco geográfico posterior a 2024). Las teselas de OpenStreetMap requieren conexión; sin ella se ven solo los polígonos.</p>
@@ -9316,7 +9330,7 @@ body.Jal_pdf-cap #Jal_app .Jal_res-col + .Jal_res-col{border-left:1px solid var(
 
 
 <footer class="Cx-pie">
-  <p><b>Compilación fusionada 2026-11-10.F12</b> · módulo Elec 2026-09-25.S2 · módulo Dip 2026-09-27.D3-mapa (demostración) · módulo D10Z 2026-10-11.Z4 · módulo D04Z 2026-11-03.D1.1 · módulo Jal 2026-11-10.J2 (mapa 2D/3D de Jalisco) · Briefing, Plan operativo y procedencia de la plataforma v3 · cómputos y casillas 2024 IEPC/INE · meta de votos por sección y PDF directo · hoja PDF por sección y transparencia en Distrito 10 ·
+  <p><b>Compilación fusionada 2026-11-10.F13</b> · módulo Elec 2026-09-25.S2 · módulo Dip 2026-09-27.D3-mapa (demostración) · módulo D10Z 2026-10-11.Z4 · módulo D04Z 2026-11-03.D1.1 · módulo Jal 2026-11-10.J3 (mapa 2D/3D de Jalisco) · Briefing, Plan operativo y procedencia de la plataforma v3 · cómputos y casillas 2024 IEPC/INE · meta de votos por sección y PDF directo · hoja PDF por sección y transparencia en Distrito 10 ·
      Consensus Estrategia — Inteligencia de Datos y Análisis Electoral.</p>
   <p>Cada pestaña conserva su propia nota de fuente, método y derechos en su
      pie. No difundir durante veda electoral.</p>
@@ -20683,7 +20697,7 @@ window.Estr_DATA_GZ = window.D10Z_DATA_GZ;</script>
       if (SUB_PEND) { v = SUB_PEND; SUB_PEND = null; }
       if (!document.getElementById('D10Z_v-' + v)) v = 'panorama';
       activa(v);
-      window.D10Z_App = { estado: S, datos: D, secciones: secciones, escenario: escenario, total: total, valor: valor, ELX: ELX, activa: activa };
+      window.D10Z_App = { estado: S, datos: D, secciones: secciones, escenario: escenario, total: total, valor: valor, ELX: ELX, activa: activa, selecciona: selecciona, limpiaSel: limpiaSel };
     }).catch(function (err) { $('#D10Z_cargando').textContent = 'No se pudieron cargar los datos: ' + err.message; console.error(err); });
   }
   /* Integrado en la página Electoral: la cáscara (CxShell) decide cuándo se ve la pestaña.
@@ -26353,7 +26367,7 @@ window.D04Estr_DATA_GZ = window.D04Z_DATA_GZ;</script>
       if (SUB_PEND) { v = SUB_PEND; SUB_PEND = null; }
       if (!document.getElementById('D04Z_v-' + v)) v = 'panorama';
       activa(v);
-      window.D04Z_App = { estado: S, datos: D, secciones: secciones, escenario: escenario, total: total, valor: valor, ELX: ELX, activa: activa };
+      window.D04Z_App = { estado: S, datos: D, secciones: secciones, escenario: escenario, total: total, valor: valor, ELX: ELX, activa: activa, selecciona: selecciona, limpiaSel: limpiaSel };
     }).catch(function (err) { $('#D04Z_cargando').textContent = 'No se pudieron cargar los datos: ' + err.message; console.error(err); });
   }
   /* Integrado en la página Electoral: la cáscara (CxShell) decide cuándo se ve la pestaña.
@@ -32089,6 +32103,7 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
     if (D.secc24.DL[s]) { selecciona([s], { vuela: true, sinMsg: true }); msgBusca(nombreSel([s]) + ' · ' + esc(TERR.nom) + '.' + (polisDe(s) ? (enAgregado(s) ? ' Esta sección 2024 ya no tiene polígono propio: su área quedó dentro del bloque municipal con dato agregado (polígonos ' + polisDe(s) + '), que se marca completo; la ficha y las tablas muestran el dato de la sección.' : ' En el marco cartográfico nuevo está partida; se marcan sus polígonos ' + polisDe(s) + '.') : (RAW.porS[s] == null ? ' Esta sección no tiene polígono en el marco nuevo: sus datos están en la ficha y las tablas, pero no se dibuja.' : '')) ); return; }
     if (PARTIDAS[s]) { selecciona(PARTIDAS[s], { vuela: true, sinMsg: true }); msgBusca('El polígono ' + s + ' es del marco cartográfico nuevo; ' + (PARTIDAS[s].length > 1 ? 'forma parte de un bloque municipal con dato agregado de las secciones 2024 ' + PARTIDAS[s].join(' y ') + ': se marca el bloque completo y el valor es la suma del conjunto, no el de cada pieza.' : 'en 2024 era parte de la sección ' + PARTIDAS[s][0] + '. Se marca con sus datos de 2024.')); return; }
     var ft = RAW.feats[RAW.porS[s]], R = window.CxReal && window.CxReal.datos ? window.CxReal.fila('DL', s) : null;
+    if (TERR.tipo !== 'jal' && (ft || R) && window.Jal_SedeActual && window.Jal_SedeActual() !== 'Anl') { msgBusca('La sección ' + s + ' no pertenece a ' + esc(TERR.nom) + '. Para verla, usa la pestaña «Mapa de Análisis».'); return; }
     if (TERR.tipo !== 'jal' && (ft || R)) { cambiaTerritorio({ tipo: 'jal', id: 0 }); buscaSeccion(String(s)); var mb = $('#Jal_busca-msg'); if (mb) mb.innerHTML += ' La sección está fuera del territorio que tenías; se cambió a Todo Jalisco para mostrarla.'; return; }
     if (ft) {
       S.sel = []; S.fuera = s; marcaGlobal();
@@ -33265,6 +33280,7 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
       window.Jal_Puente3D = { S: S, D: D, DIST: DIST, TERR: TERR, RAW: function () { return RAW; }, boundsTerr: boundsTerr, cajaTerr: cajaTerr, esBordeT: esBordeT, nombreMun: nombreMun, motivoSinDato: motivoSinDato, PARTIDAS: PARTIDAS, ELX: ELX, css: css, esc: esc, nombreF: nombreF, colorMapa: colorMapa, datoMapa: datoMapa, tipMapa: tipMapa, divSeccion: divSeccion, partSeccion: partSeccion, selecciona: selecciona, clicFuera: clicFuera, ajusta2D: ajusta2D, secciones: secciones, metaSt: metaSt, fmt: fmt, pc: pc, mapa2D: function () { return MAPA; } }; /* M3: + puntos de territorio */
       activa('mapa'); /* M1 · única subpestaña */
       window.Jal_App = { estado: S, datos: D, secciones: secciones, escenario: escenario, total: total, valor: valor, ELX: ELX, activa: activa };
+      if (window.Jal_Sede) window.Jal_Sede();
     }).catch(function (err) { $('#Jal_cargando').textContent = 'No se pudieron cargar los datos: ' + err.message; console.error(err); });
   }
   /* Integrado en la página Electoral: la cáscara (CxShell) decide cuándo se ve la pestaña.
@@ -33272,9 +33288,62 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
   function topNav() { if (window.CxShell && window.CxShell.altoNivel1) APP.style.setProperty('--Jal_top', window.CxShell.altoNivel1() + 'px'); }
   if (INTEGRADO) {
     APP.classList.add('Jal_integrado');
-    window.CxShell.alMostrar('Anl', function () { topNav(); if (!iniciado) arranca(); else if (D) render(); });
+
+    /* J3 · SEDES. El mismo motor se monta en la pestaña visible: en «Mapa de Análisis» con selector
+       de territorio; en la subvista «Mapa» del Distrito 10 y del Distrito 4, fijo en su distrito local.
+       No se duplica código ni datos: el nodo #Jal_app se muda de contenedor. */
+    var SEDE = 'Anl', HOGAR = APP.parentNode, GUARDA = null;
+    var FIJO = { D10Z: { tipo: 'dl', id: 10 }, D04Z: { tipo: 'dl', id: 4 } };
+    function visSede(id) { var n = document.getElementById(id); return !!n && !n.hidden; }
+    function sedeDeseada() {
+      if (window.CxShell.activa('D10Z')) return visSede('D10Z_v-mapa') ? 'D10Z' : null;
+      if (window.CxShell.activa('D04Z')) return visSede('D04Z_v-mapa') ? 'D04Z' : null;
+      return window.CxShell.activa('Anl') ? 'Anl' : null;
+    }
+    function monta() {
+      var s = sedeDeseada(); if (!s) return;
+      var host = s === 'Anl' ? HOGAR : document.getElementById('Jal_sede-' + s); if (!host) return;
+      if (APP.parentNode !== host) host.appendChild(APP);
+      APP.classList.toggle('Jal_en-sede', s !== 'Anl'); APP.setAttribute('data-jal_sede', s);
+      topNav();
+      if (!iniciado) { SEDE = s; arranca(); return; }
+      if (!D) { SEDE = s; return; }
+      var T = FIJO[s] || null;
+      if (s !== 'Anl' && SEDE === 'Anl') GUARDA = { tipo: TERR.tipo, id: TERR.id };
+      if (s === 'Anl' && SEDE !== 'Anl') T = GUARDA || { tipo: 'jal', id: 0 };
+      SEDE = s;
+      if (T && !(TERR.tipo === T.tipo && TERR.id === T.id)) cambiaTerritorio(T); else render();
+      window.dispatchEvent(new Event('resize')); espejo();
+    }
+    /* En una pestaña de distrito manda una sola barra de controles: la del motor. Su elección,
+       su fuerza y su coalición se copian al módulo anfitrión (cuya barra se oculta en «Mapa»). */
+    function espejo() {
+      var px = SEDE === 'D10Z' ? 'D10Z_' : SEDE === 'D04Z' ? 'D04Z_' : null; if (!px) return;
+      ['sel-eleccion', 'sel-fuerza'].forEach(function (k) {
+        var a = document.getElementById('Jal_' + k), b = document.getElementById(px + k);
+        if (a && b && b.value !== a.value && [].some.call(b.options, function (o) { return o.value === a.value; })) { b.value = a.value; b.dispatchEvent(new Event('change', { bubbles: true })); }
+      });
+      var ca = document.querySelectorAll('#Jal_coal input[type=checkbox]'), cb = document.querySelectorAll('#' + px + 'coal input[type=checkbox]');
+      if (ca.length === cb.length) [].forEach.call(ca, function (x, i) { if (cb[i].checked !== x.checked) { cb[i].checked = x.checked; cb[i].dispatchEvent(new Event('change', { bubbles: true })); } });
+    }
+    ['change', 'click'].forEach(function (t) { APP.addEventListener(t, function (ev) { if (ev.target && ev.target.closest && ev.target.closest('.Jal_ctrl')) setTimeout(espejo, 0); }); });
+    window.Jal_Sede = function () { if (D && FIJO[SEDE] && !(TERR.tipo === FIJO[SEDE].tipo && TERR.id === FIJO[SEDE].id)) { cambiaTerritorio(FIJO[SEDE]); window.dispatchEvent(new Event('resize')); } };
+    window.Jal_SedeActual = function () { return SEDE; };
+    /* la sección marcada en el motor se refleja en el módulo anfitrión (histórico del Distrito 10) */
+    function enlazaSede() {
+      var A = SEDE === 'D10Z' ? window.D10Z_App : SEDE === 'D04Z' ? window.D04Z_App : null;
+      if (!A || !A.selecciona || !A.datos) return;
+      try { var l = S.sel.filter(function (x) { return A.datos.secc24 && A.datos.secc24.DL[x]; }); if (l.length) A.selecciona(l, { sinMsg: true }); else if (A.limpiaSel) A.limpiaSel(); } catch (e) { }
+    }
+    var selJ = selecciona, limJ = limpiaSel;
+    selecciona = function () { var r = selJ.apply(this, arguments); enlazaSede(); return r; };
+    limpiaSel = function () { var r = limJ.apply(this, arguments); enlazaSede(); return r; };
+    ['Anl', 'D10Z', 'D04Z'].forEach(function (v) { window.CxShell.alMostrar(v, monta); });
+    if (typeof MutationObserver === 'function') ['D10Z_v-mapa', 'D04Z_v-mapa'].forEach(function (id) {
+      var n = document.getElementById(id); if (n) new MutationObserver(monta).observe(n, { attributes: true, attributeFilter: ['hidden'] });
+    });
     window.CxShell.alCambiarTema(function () {
-      if (D && window.CxShell.activa('Anl')) render();
+      if (D && sedeDeseada()) render();
     });
     window.addEventListener('resize', topNav);
   } else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', arranca); else arranca();
