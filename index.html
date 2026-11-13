@@ -6415,7 +6415,7 @@ html[data-tema="oscuro"]{
 #Jal_app .Jal_cuenta{font-size:12.5px;color:var(--Jal_tinta2)}
 #Jal_app .Jal_mapa{height:704px;border-radius:10px;border:1px solid var(--Jal_filete);background:var(--Jal_panel2)}
 @media (max-width:720px){#Jal_app .Jal_mapa{height:506px}}
-#Jal_app .Jal_mapa-fila{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px}
+#Jal_app .Jal_mapa-fila{display:grid;grid-template-columns:minmax(0,1fr) 352px;gap:16px}
 @media (max-width:1080px){#Jal_app .Jal_mapa-fila{grid-template-columns:minmax(0,1fr)}}
 #Jal_app .Jal_ficha dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:8px 0;font-size:13.5px}
 #Jal_app .Jal_ficha dt{color:var(--Jal_tinta2)}
@@ -6908,7 +6908,7 @@ body.Jal_pdf-cap #Jal_app .Jal_res-col + .Jal_res-col{border-left:1px solid var(
 #Jal_app .JalE_fc-pie{display:flex;justify-content:space-between;align-items:baseline;gap:6px;margin-top:5px;color:var(--Jal_tinta2)}
 #Jal_app .JalE_fc-pie a{font-weight:600;color:var(--Jal_ok-ink);white-space:nowrap}
 #Jal_app .JalE_fc-nota{margin:5px 0 0;color:var(--Jal_tinta2)}
-@media (min-width:1081px){#Jal_app .Jal_mapa-fila>.Jal_ficha{max-height:704px;overflow:auto;align-self:start;box-sizing:border-box}}
+@media (min-width:1081px){#Jal_app .Jal_mapa-fila>.Jal_ficha{height:704px;max-height:704px;overflow:auto;align-self:start;box-sizing:border-box}}
 #Jal_app .JalE_inf h3{margin:0 0 4px}
 #Jal_app .JalE_inf-h{margin:10px 0 4px!important;font:700 13px/1.3 var(--Jal_f-titulo)!important;letter-spacing:.02em!important;text-transform:none!important;color:var(--Jal_ok-ink)}
 #Jal_app .JalE_inf p{margin:4px 0}
@@ -8177,6 +8177,27 @@ body.D03F_pdf-cap #D03F_app .D03F_res-col + .D03F_res-col{border-left:1px solid 
 #Jal_app.Jal_con-mun .Jal3D_rotulo,#Jal_app.Jal_con-mun .leaflet-tooltip.Jal_rotulo:not(.Jal_rot-mun){display:none}
 </style>
 <style>
+/* J5 · ficha lateral 10 % más grande, del alto del mapa, y su versión para el PDF y la impresión */
+#Jal_app .Jal_mapa-fila>.Jal_ficha h3{font-size:1.21em}
+#Jal_app .Jal_mapa-fila>.Jal_ficha dl{font-size:14.85px}
+#Jal_app .Jal_mapa-fila>.Jal_ficha .Jal_nota{font-size:13.2px}
+#Jal_app .Jal_ficha dd.Jal_dd-rep{font-size:12.5px;line-height:1.35}
+body.Jal_pdf-cap #Jal_app .Jal_mapa-fila>.Jal_ficha{height:auto;max-height:none;overflow:visible}
+body.Jal_pdf-cap #Jal_app .Jal_mapa-fila>*{align-self:start}
+#Jal_app .JalE_fc-b{grid-template-columns:40px minmax(0,1fr) 32px}
+#Jal_app .JalE_fc-b span:first-child{white-space:nowrap}
+@media print{
+  @page{size:letter landscape;margin:9mm}
+  #Jal_app .Jal_mapa-fila{display:grid!important;grid-template-columns:minmax(0,1fr) 31%!important;gap:10px!important;break-inside:avoid;zoom:.72}
+  #Jal_app .Jal_mapa-fila>.Jal_ficha{height:auto!important;max-height:none!important;overflow:visible!important}
+  #Jal_app .Jal_panel,#Jal_app .Jal_lec,#Jal_app .JalE_bloque,#Jal_app .Jal_res-grid{break-inside:avoid}
+  #Jal_app .Jal_tabla-env{max-height:none!important;overflow:visible!important}
+  #Jal_app tr{break-inside:avoid}
+  #Jal_app thead{display:table-header-group}
+  #Jal_app .Jal3D_rot-mun,#Jal_app .Jal3D_rotulo{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<style>
 /* J3 · sedes del motor Jal_: en las pestañas de distrito sustituye al mapa plano, su ficha y sus casillas */
 #D10Z_app #D10Z_v-mapa > .D10Z_panel:not(#D10Z_hist-panel){display:none !important}
 #D04Z_app #D04Z_v-mapa > .D04Z_panel{display:none !important}
@@ -9317,7 +9338,7 @@ body.D03F_pdf-cap #D03F_app .D03F_res-col + .D03F_res-col{border-left:1px solid 
               <li><b>Rotar e inclinar:</b> arrastra con el botón derecho, o <kbd>Ctrl</kbd> + arrastre; en pantalla táctil, gira o desliza con dos dedos.</li>
               <li><b>Acercar:</b> rueda del ratón, doble clic o pellizco.</li>
               <li><b>Brújula:</b> clic para poner el norte arriba; arrástrala para girar.</li>
-              <li><b>2D / 3D:</b> pasa de la vista inclinada a la vista desde arriba.</li>
+              <li><b>2D / 3D:</b> pasa de la vista inclinada a la vista desde arriba, con el norte arriba; después puedes girarla libremente.</li>
               <li><b>Teclado</b> (con el mapa activo): flechas para mover, <kbd>Mayús</kbd> + flechas para rotar e inclinar, <kbd>+</kbd> y <kbd>−</kbd> para el zoom.</li>
               <li><b>Clic en una columna:</b> la marca y abre su ficha, resumen y casillas.</li>
               <li><b>Clic en un punto</b> (T, M o C): abre su ficha; desde ahí puedes marcar su sección.</li></ul>
@@ -11174,7 +11195,7 @@ body.D03F_pdf-cap #D03F_app .D03F_res-col + .D03F_res-col{border-left:1px solid 
 
 
 <footer class="Cx-pie">
-  <p><b>Compilación fusionada 2026-11-13.F15</b> · módulo Elec 2026-09-25.S2 · módulo Dip 2026-09-27.D3-mapa (demostración) · módulo D10Z 2026-10-11.Z4 · módulo D04Z 2026-11-03.D1.1 · módulo D03F 2026-11-10.T1 (Distrito 3 federal) · módulo Jal 2026-11-13.J4 (mapa 2D/3D de Jalisco con límites municipales) · Briefing, Plan operativo y procedencia de la plataforma v3 · cómputos y casillas 2024 IEPC/INE · meta de votos por sección y PDF directo · hoja PDF por sección y transparencia en Distrito 10 ·
+  <p><b>Compilación fusionada 2026-11-13.F16</b> · módulo Elec 2026-09-25.S2 · módulo Dip 2026-09-27.D3-mapa (demostración) · módulo D10Z 2026-10-11.Z4 · módulo D04Z 2026-11-03.D1.1 · módulo D03F 2026-11-10.T1 (Distrito 3 federal) · módulo Jal 2026-11-13.J5 (mapa 2D/3D de Jalisco con límites municipales, ficha del territorio y PDF fiel a la pantalla) · Briefing, Plan operativo y procedencia de la plataforma v3 · cómputos y casillas 2024 IEPC/INE · meta de votos por sección y PDF directo · hoja PDF por sección y transparencia en Distrito 10 ·
      Consensus Estrategia — Inteligencia de Datos y Análisis Electoral.</p>
   <p>Cada pestaña conserva su propia nota de fuente, método y derechos en su
      pie. No difundir durante veda electoral.</p>
@@ -14692,7 +14713,7 @@ function fechaLarga(o) {
 (function textosDeEntidad() {
   var ent = M.entidad || "—";
   $("#Elec-titulo-entidad").textContent = ent;
-  document.title = "Elec · Preferencia electoral municipal — " + ent + ", alcaldías 2027";
+  if (!window.CxShell || !window.CxShell.activa || window.CxShell.activa('Elec')) document.title = "Elec · Preferencia electoral municipal — " + ent + ", alcaldías 2027";
   var pal = PALABRA[MUNIS.length] || String(MUNIS.length);
   document.querySelectorAll(".Elec-nplazas").forEach(function (el) { el.textContent = pal; });
   $("#Elec-pie-fuente").innerHTML = "<b>Fuente:</b> " + esc(M.casa || "—") + ". <i>" + esc(ent) +
@@ -36733,6 +36754,26 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
     (function walk(c) { if (typeof c[0] === 'number') { b[0] = Math.min(b[0], c[0]); b[1] = Math.min(b[1], c[1]); b[2] = Math.max(b[2], c[0]); b[3] = Math.max(b[3], c[1]); } else c.forEach(walk); })(fc.features.map(function (f) { return f.geometry.coordinates; }));
     return [[b[0], b[1]], [b[2], b[3]]];
   }
+  /* J5 · captura fiel del mapa para el PDF: lienzo WebGL en el cuadro exacto + capa DOM (rótulos,
+     puntos, escala y barra de estado); fuera quedan los botones de navegación. */
+  function captura() {
+    return new Promise(function (ok, mal) {
+      if (!M || !listo) { mal(new Error('El mapa 3D no está listo.')); return; }
+      var marco = document.getElementById('Jal3D_marco'), mapa = document.getElementById('Jal3D_mapa');
+      M.once('render', function () {
+        var gl = M.getCanvas(), w = marco.clientWidth, h = marco.clientHeight, k = gl.width / Math.max(1, gl.clientWidth);
+        var c = document.createElement('canvas'); c.width = Math.round(w * k); c.height = Math.round(h * k);
+        var g = c.getContext('2d'); g.fillStyle = getComputedStyle(mapa).backgroundColor || '#EEF0EA'; g.fillRect(0, 0, c.width, c.height);
+        var rm = marco.getBoundingClientRect(), rc = gl.getBoundingClientRect();
+        try { g.drawImage(gl, (rc.left - rm.left) * k, (rc.top - rm.top) * k, rc.width * k, rc.height * k); } catch (e) { mal(e); return; }
+        window.html2canvas(marco, { backgroundColor: null, logging: false, scale: k, useCORS: true,
+          ignoreElements: function (n) { return n.tagName === 'CANVAS' || (n.classList && (n.classList.contains('Jal3D_ctrl') || n.classList.contains('Jal3D_ayuda') || n.classList.contains('maplibregl-ctrl-group'))); },
+          onclone: function (doc) { ['Jal3D_marco', 'Jal3D_mapa'].forEach(function (id) { var x = doc.getElementById(id); if (x) x.style.background = 'transparent'; }); var cc = doc.querySelectorAll('.maplibregl-canvas-container'); for (var i = 0; i < cc.length; i++) cc[i].style.background = 'transparent'; } })
+          .then(function (dom) { g.drawImage(dom, 0, 0, c.width, c.height); ok(c); }, function () { ok(c); });
+      });
+      M.triggerRepaint();
+    });
+  }
   /* J4 · límites municipales en el 3D: solo en «Todo Jalisco» */
   var MUNM = [], MUN_ON = true, MUN_Z = false;
   function munZoom() { if (!M) return; var z = M.getZoom(), u = z < 7.4 ? 0.10 : z < 8.3 ? 0.035 : z < 9.3 ? 0.01 : 0; MUNM.forEach(function (m) { var e = m.getElement(); e.style.display = +e.getAttribute('data-jal3d_a') >= u ? '' : 'none'; }); }
@@ -36913,7 +36954,7 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
     $('#Jal3D_b-der').addEventListener('click', pasa(function () { M.easeTo({ bearing: M.getBearing() + 22.5, duration: 450 }); }));
     $('#Jal3D_b-sube').addEventListener('click', pasa(function () { M.easeTo({ pitch: Math.min(78, M.getPitch() + 10), duration: 400 }); }));
     $('#Jal3D_b-baja').addEventListener('click', pasa(function () { M.easeTo({ pitch: Math.max(0, M.getPitch() - 10), duration: 400 }); }));
-    $('#Jal3D_b-2d3d').addEventListener('click', pasa(function () { M.easeTo({ pitch: M.getPitch() > 5 ? 0 : CAM0.pitch, duration: 700 }); }));
+    $('#Jal3D_b-2d3d').addEventListener('click', pasa(function () { /* J5 · a 2D: plano y con el norte arriba en el mismo clic; a 3D: se conserva el rumbo */ if (M.getPitch() > 5) M.easeTo({ pitch: 0, bearing: 0, duration: 700 }); else M.easeTo({ pitch: CAM0.pitch, duration: 700 }); }));
     $('#Jal3D_b-casa').addEventListener('click', pasa(function () { encuadra(true); }));
     $('#Jal3D_b-orbita').addEventListener('click', function () { if (!listo) return; if (ORBITA) paraOrbita(); else orbita(); });
     $('#Jal3D_b-pantalla').addEventListener('click', pantalla);
@@ -37020,6 +37061,7 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
     return true;
   }
   global.Jal3D = {
+    captura: function () { return captura(); },
     municipios: function (on) { if (P) municipios(on); else if (on != null) MUN_ON = !!on; },
     repinta: function () { if (conecta() !== false) { if (VISTA === '3d') inicia(); repinta(); } },
     marca: function (vuela) { if (P) marca(vuela); },
@@ -38636,7 +38678,7 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
     if (window.Jal_PARTIDAS && window.Jal_PARTIDAS[s] && !PARTIDAS[s]) return ' · pertenece a un bloque municipal con dato agregado que cruza distritos: su dato se ve en «Todo Jalisco» o en la vista de su municipio';
     return RAW && !RAW.R.secc.DL[s] ? ' · sin cómputo 2024 en el paquete: polígono del marco nuevo sin equivalencia registrada, o sección sin casillas' : '';
   }
-  function pdfOk() { return !!(S.sel.length || S.fuera || (D && D.tot24.DL.cas <= 700)); }
+  function pdfOk() { return !!D; }
   function notaReseccion() {
     var c = D.conteo, un = 0, agPol = 0, G = {};
     Object.keys(PARTIDAS).forEach(function (k) { var d = PARTIDAS[k]; if (d.length > 1) { agPol++; G[d.join('+')] = d.length; } else un++; });
@@ -38654,7 +38696,32 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
     ROTS.forEach(function (r) { MAPA.removeLayer(r); }); ROTS = [];
     D.bordes.features.forEach(function (ft) { if (!(ft.properties.d > 0)) return; ROTS.push(L.tooltip({ permanent: true, direction: 'center', className: 'Jal_rotulo' }).setLatLng(ft.properties.c).setContent('Distrito ' + ft.properties.d).addTo(MAPA)); });
   }
-  function textoFichaVacia() { return '<h3 style="margin-top:0">Elige una sección</h3><p class="Jal_nota">Toca un polígono del mapa o usa el buscador. El territorio activo es <b>' + esc(TERR.nom) + '</b>.</p>'; }
+  function fichaVaciaSimple() { return '<h3 style="margin-top:0">Elige una sección</h3><p class="Jal_nota">Toca un polígono del mapa o usa el buscador. El territorio activo es <b>' + esc(TERR.nom) + '</b>.</p>'; }
+  /* J5 · Sin sección marcada, la ficha muestra la SUMA del territorio elegido (municipio, distrito o
+     Todo Jalisco): sus secciones más sus casillas especiales, igual que el resumen de abajo. */
+  function textoFichaVacia() { try { return fichaTerr(); } catch (e) { if (window.console) console.error(e); return fichaVaciaSimple(); } }
+  function reparto(arr, k) {
+    var c = {}; arr.forEach(function (x) { var v = x[k]; if (v) c[v] = (c[v] || 0) + 1; });
+    return Object.keys(c).sort(function (a, b) { return c[b] - c[a]; }).map(function (v) { return esc(v) + ' ' + fmt(c[v]); }).join(' · ') || '—';
+  }
+  function fichaTerr() {
+    if (!D) return fichaVaciaSimple();
+    var e = ELX[S.el], T = total(S.el); if (!T || !T.tv) return fichaVaciaSimple();
+    var arr = secciones(S.el, S.f), n = arr.length, g = e.k ? ganaFila(T, e.k) : null;
+    var nomG = g ? (NOMBRE[g.g1.k] || g.g1.n || g.g1.k) : '—', ganS = g ? arr.filter(function (x) { return x.gan === g.g1.k; }).length : 0;
+    var val = valor(T, S.f, e), pct = val != null && T.tv ? val / T.tv * 100 : null;
+    var dl = total('DL24'), df = total('DF24'), vl = dl && dl.tv ? valor(dl, S.f, ELX.DL24) : null, vf = df && df.tv ? valor(df, S.f, ELX.DF24) : null;
+    var meta = '';
+    if (window.CxMeta) { var c = cuentaMeta(), st = metaSt(); meta = '<dt class="Cx-meta-dt">Meta</dt><dd class="Cx-meta-dd">' + fmt(c.alc) + ' de ' + fmt(n) + ' secc. llegan a ' + esc(window.CxMeta.texto(st)) + (c.deb ? ' · faltan ' + fmt(Math.round(c.faltan)) + ' votos' : '') + '</dd>'; }
+    var tit = TERR.tipo === 'jal' ? 'Todo Jalisco' : TERR.nom;
+    return '<h3 style="margin-top:0">' + esc(tit) + '</h3><p class="Jal_nota">Suma de sus ' + fmt(n) + ' secciones con cómputo y sus casillas especiales. Toca una sección del mapa para ver su ficha.</p>' +
+      '<dl><dt>Elección</dt><dd>' + esc(e.nombre) + '</dd><dt>Secciones</dt><dd>' + fmt(n) + '</dd><dt>Casillas</dt><dd>' + fmt(T.cas) + '</dd><dt>Lista nominal</dt><dd>' + fmt(T.ln) + '</dd><dt>Votos</dt><dd>' + fmt(T.tv) + '</dd><dt>Participación</dt><dd>' + pc(T.ln ? T.tv / T.ln * 100 : null) + '</dd>' +
+      '<dt>Ganador</dt><dd>' + esc(nomG) + (g ? ' · gana ' + fmt(ganS) + ' de ' + fmt(n) + ' secc.' : '') + '</dd>' +
+      '<dt>' + esc(nombreF(S.f)) + '</dt><dd>' + (val == null ? '—' : fmt(val) + ' · ' + pc(pct)) + '</dd>' + meta +
+      '<dt>Tipología</dt><dd class="Jal_dd-rep">' + reparto(arr, 'tipo') + '</dd><dt>Ventaja</dt><dd>' + (g ? pts(g.mg) + ' pts' : '—') + '</dd><dt>Cambio Δ1</dt><dd>—</dd><dt>Prioridad</dt><dd class="Jal_dd-rep">' + reparto(arr, 'prio') + '</dd>' +
+      (vl != null && vf != null ? '<dt>Local / federal 2024</dt><dd>' + pc(vl / dl.tv * 100) + ' / ' + pc(vf / df.tv * 100) + '</dd>' : '') + '</dl>' +
+      '<p class="Jal_nota" style="margin-top:8px">El resumen y las casillas del territorio están debajo del mapa.</p>';
+  }
   /* J4 · LÍMITES MUNICIPALES (solo en «Todo Jalisco»). Jerarquía de líneas: el municipio va con línea
      gruesa y clara y la sección queda como retícula fina. Los nombres aparecen según el acercamiento. */
   var CAPA_MUN = null, ROTS_MUN = [], MUN_ON = true, MUN_OYE = false;
@@ -39337,7 +39404,7 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
     grupos.sort(function (a, b) { return b.v - a.v; });
     return { g1: grupos[0], g2: grupos[1], mg: r.tv ? (grupos[0].v - (grupos[1] ? grupos[1].v : 0)) / r.tv * 100 : null };
   }
-  function pintaResumen() { pintaResumen0(); try { pintaHist(); } catch (e) { if (window.console) console.error(e); } rotuloPdf(); }
+  function pintaResumen() { pintaResumen0(); try { pintaHist(); } catch (e) { if (window.console) console.error(e); } rotuloPdf(); if (!S.sel.length && !S.fuera) { var fiT = $('#Jal_ficha'); if (fiT) fiT.innerHTML = textoFichaVacia(); } }
   function pintaResumen0() {
     var P = $('#Jal_resumen'), modo, L, Fd, tit, sub;
     if (S.sel.length) { modo = 'sel'; L = filaSel('DL24'); Fd = filaSel('DF24'); tit = nombreSel(S.sel); sub = (S.sel.map(function (s) { return D.colonias[s]; }).filter(Boolean)[0] || 'Colonia no registrada en los archivos') + ' · ' + TERR.nom + ' · local y federal'; }
@@ -40023,7 +40090,7 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
   function rotuloPdf() {
     var b = $('#Jal_btn-pdf-sec'); if (!b || b.disabled) return;
     b.textContent = S.sel.length > 1 ? 'PDF de las secciones' : S.sel.length || S.fuera ? 'PDF de la sección' : 'PDF de ' + TERR.nom;
-    b.title = !pdfOk() ? 'Marca una sección, o elige un distrito o un municipio: Todo Jalisco son miles de casillas' : S.sel.length || S.fuera ? 'Descarga la hoja de consulta de lo marcado en el mapa' : 'Sin sección marcada: descarga la hoja de consulta de ' + nomCompleto(); b.setAttribute('aria-disabled', pdfOk() ? 'false' : 'true'); b.classList.toggle('Jal_btn-off', !pdfOk());
+    b.title = !pdfOk() ? 'Espera a que carguen los datos' : 'Descarga en PDF la pantalla tal como se ve: el mapa con su ficha y, después, todo lo que está debajo'; b.setAttribute('aria-disabled', pdfOk() ? 'false' : 'true'); b.classList.toggle('Jal_btn-off', !pdfOk());
   }
 
   /* ---------- mapa propio en lienzo (teselas OSM + polígonos) ---------- */
@@ -40186,17 +40253,18 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
 
   var PDF_EN_CURSO = false;
   function pdfSeccion() {
+    /* J5 · PDF fiel a la pantalla: página 1 con el mapa TAL COMO SE VE (3D o 2D, misma cámara)
+       y la ficha lateral al lado; después, todo lo que hay debajo del mapa en el orden de la pantalla. */
     if (PDF_EN_CURSO) return;
     if (!window.html2canvas || !window.jspdf) { alert('No se pudo cargar el generador de PDF en este navegador.'); return; }
-    if (!MAPA || !CAPA) { alert('Abre el mapa una vez antes de generar el PDF.'); return; }
+    var en3D = !!(window.Jal3D && window.Jal3D.activo && window.Jal3D.activo() && window.Jal3D.listo && window.Jal3D.listo());
+    if (!en3D && (!MAPA || !CAPA)) { alert('Abre el mapa una vez antes de generar el PDF.'); return; }
     PDF_EN_CURSO = true;
     var btn = $('#Jal_btn-pdf-sec'), rot = btn.textContent; btn.disabled = true; btn.textContent = 'Generando PDF…';
     var raiz = document.documentElement, tema = raiz.getAttribute('data-tema'), app = document.getElementById('Jal_app'), anchoPrevio = app.style.width;
     var sel = S.sel.slice(), fuera = S.fuera, dist = !sel.length && !fuera;
-    var objetivo = sel.length ? poligonosDe(sel) : fuera ? D.geo.features.filter(function (ft) { return ft.properties.s === fuera; }) : D.geo.features.filter(function (ft) { return ft.properties.a === 1; });
-    var titulo = dist ? nomCompleto() : sel.length ? nombreSel(sel) : 'Sección ' + fuera;
-    var sub = dist ? TERR.nom + ' · ' + NS + ' secciones · ' + ELX[S.el].nombre : (sel.length ? TERR.nom : 'Fuera de ' + TERR.nom + ' · contexto') + ' · ' + ELX[S.el].nombre;
-    var capaTxt = ($('#Jal_sel-capa').selectedOptions[0] || {}).textContent || '';
+    var titulo = dist ? (TERR.tipo === 'jal' ? 'Todo Jalisco' : TERR.nom) : sel.length ? nombreSel(sel) : 'Sección ' + fuera;
+    var sub = (dist ? NS + ' secciones · ' : (sel.length ? TERR.nom : 'Fuera de ' + TERR.nom + ' · contexto') + ' · ') + ELX[S.el].nombre + ' · ' + nombreF(S.f) + ' · ' + (($('#Jal_sel-capa').selectedOptions[0] || {}).textContent || '');
     var archivo = (dist ? slugTerr() : (sel.length > 1 ? 'Secciones-' + sel.join('-') : 'Seccion-' + (sel[0] || fuera)) + '-' + slugTerr()) + '-' + new Date().toISOString().slice(0, 10) + '.pdf';
     function restaura() {
       if (tema) { raiz.setAttribute('data-tema', tema); if (window.CxShell && window.CxShell.notificarTema) window.CxShell.notificarTema(); }
@@ -40207,46 +40275,79 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
     if (window.innerWidth < 1100) app.style.width = '1180px';
     if (tema) { raiz.removeAttribute('data-tema'); if (window.CxShell && window.CxShell.notificarTema) window.CxShell.notificarTema(); }
     var espera = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
-    var imgMapa, bloques = [];
+    var imgMapa = null, imgFicha = null, imgLey = [], bloques = [], logo = null;
+    /* logotipo oficial tal cual está en la cabecera (sin modificarlo): se pasa a PNG para el PDF */
+    try { var lg = document.getElementById('Cx-logo'); if (lg && lg.naturalWidth) { var cl = document.createElement('canvas'); cl.width = lg.naturalWidth; cl.height = lg.naturalHeight; cl.getContext('2d').drawImage(lg, 0, 0); logo = { u: cl.toDataURL('image/png'), r: lg.naturalWidth / lg.naturalHeight }; } } catch (e) { logo = null; }
     return espera(450).then(function () {
       Object.keys(CH).forEach(function (k) { var c = CH[k]; if (c && c.canvas && c.canvas.offsetParent) { try { c.resize(); c.update('none'); } catch (e) { } } });
-      return espera(250);
+      return espera(en3D ? 1300 : 500);
     }).then(function () {
-      return lienzoMapa(objetivo, dist, 1530, 1530).then(function (m) { imgMapa = m; });
+      /* 1 · el mapa como se ve */
+      if (en3D) return window.Jal3D.captura().then(function (c) { imgMapa = { c: c, w: c.width, h: c.height }; });
+      var m2 = $('#Jal_mapa');
+      return window.html2canvas(m2, { backgroundColor: null, logging: false, useCORS: true, scale: Math.min(2, 1800 / Math.max(1, m2.clientWidth)), ignoreElements: function (n) { return n.classList && (n.classList.contains('leaflet-control-zoom')); } })
+        .then(function (c) { imgMapa = { c: c, w: c.width, h: c.height }; });
     }).then(function () {
+      /* 2 · la ficha lateral completa, con su diseño */
+      var fi = $('#Jal_ficha'); return cap(fi).then(function (r) { imgFicha = r; });
+    }).then(function () {
+      /* 3 · leyendas del mapa */
+      var els = ['#Jal_ley-mapa', '#Jal3D_ley', '#JalP_nota-ley', '#Jal_nota-mapa'].map(function (q) { return $(q); }).filter(function (n) { return n && n.offsetParent && n.textContent.trim(); });
+      return els.reduce(function (p, n) { return p.then(function () { return cap(n).then(function (r) { imgLey.push(r); }); }); }, Promise.resolve());
+    }).then(function () {
+      /* 4 · todo lo de debajo, en el orden de la pantalla */
       var res = $('#Jal_resumen'), hist = $('#Jal_hist-panel'), casP = $('#Jal_tb-cas').closest('.Jal_panel');
-      var p = cap(res).then(function (r) { bloques.push(r); });
-      if (hist && $('#Jal_tb-hist').rows.length) p = p.then(function () { return capPanel(hist, $('#Jal_tb-hist'), 30).then(function (l) { bloques = bloques.concat(l); }); });
-      else if (hist) p = p.then(function () { return cap(hist).then(function (r) { bloques.push(r); }); });
+      var p = Promise.resolve();
+      ['#Jal_lec-mapa', '#JalP_lec'].forEach(function (q) { var n = $(q); if (n && n.offsetParent && n.textContent.trim()) p = p.then(function () { return cap(n).then(function (r) { bloques.push(r); }); }); });
+      if (window.JalE) p = p.then(function () { return window.JalE.pdf(cap).then(function (l) { bloques = bloques.concat(l); }); });
+      p = p.then(function () { return cap(res).then(function (r) { bloques.push(r); }); });
+      if (hist && hist.offsetParent) {
+        if ($('#Jal_tb-hist') && $('#Jal_tb-hist').rows.length) p = p.then(function () { return capPanel(hist, $('#Jal_tb-hist'), 30).then(function (l) { bloques = bloques.concat(l); }); });
+        else p = p.then(function () { return cap(hist).then(function (r) { bloques.push(r); }); });
+      }
       if (casP) p = p.then(function () {
-        var tb = $('#Jal_tb-cas'), tr = tb.querySelector('tbody tr'), thH = tb.tHead ? tb.tHead.getBoundingClientRect().height : 34, trH = tr ? tr.getBoundingClientRect().height : 30;
+        var tb = $('#Jal_tb-cas'), filas = $$('tbody tr', tb).length;
+        if (filas > 700) {
+          /* tabla demasiado larga para un PDF: va el encabezado del panel y la indicación de usar el CSV */
+          var env = tb.closest('.Jal_tabla-env'), aviso = document.createElement('p');
+          aviso.className = 'Jal_nota'; aviso.style.fontWeight = '600';
+          aviso.textContent = 'La tabla tiene ' + fmt(filas) + ' casillas: no cabe en un PDF. Descárgala completa con el botón CSV del tablero, o marca una sección para incluir sus casillas aquí.';
+          if (env) { env.classList.add('Jal_pdf-fuera'); env.parentNode.insertBefore(aviso, env); }
+          return cap(casP).then(function (r) { bloques.push(r); }).then(function () { if (env) env.classList.remove('Jal_pdf-fuera'); aviso.remove(); }, function (e) { if (env) env.classList.remove('Jal_pdf-fuera'); aviso.remove(); throw e; });
+        }
+        var tr = tb.querySelector('tbody tr'), thH = tb.tHead ? tb.tHead.getBoundingClientRect().height : 34, trH = tr ? tr.getBoundingClientRect().height : 30;
         var refW = res.getBoundingClientRect().width, kT = Math.min(1, refW / Math.max(1, tb.getBoundingClientRect().width)), mmPx = 255.4 / refW * kT, porTramo = Math.max(8, Math.floor((178 / mmPx - thH - 6) / Math.max(trH, 18)));
         return capPanel(casP, tb, porTramo).then(function (l) { bloques = bloques.concat(l); });
       });
-      if (window.JalE) p = p.then(function () { return window.JalE.pdf(cap).then(function (l) { bloques = bloques.concat(l); }); }); /* M4 */
       return p.then(function () { return res.getBoundingClientRect().width; });
     }).then(function (refW) {
       var jsPDF = window.jspdf.jsPDF, doc = new jsPDF({ unit: 'mm', format: 'letter', orientation: 'landscape', compress: true });
-      var W = 279.4, H = 215.9, M = 12, top = M + 9, bottom = H - M - 5, ancho = W - 2 * M;
-      /* página 1 */
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(17); doc.setTextColor(27, 27, 27); doc.text(pdfTxt(titulo), M, top + 4);
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); doc.setTextColor(80, 92, 86); doc.text(doc.splitTextToSize(pdfTxt(sub), ancho)[0], M, top + 9.5);
-      var yM = top + 13, lado = bottom - yM;
-      doc.addImage(imgMapa.c.toDataURL('image/jpeg', 0.9), 'JPEG', M, yM, lado, lado, undefined, 'FAST');
-      var xC = M + lado + 7, wC = W - M - xC;
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(27, 27, 27); doc.text(dist ? 'Datos del distrito' : 'Ficha de la sección', xC, yM + 3);
-      var yC = columnaPdf(doc, xC, yM + 10, wC, bottom - 24, datosColumna());
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(92, 104, 98);
-      var notaMapa = doc.splitTextToSize(pdfTxt('Relleno: ' + capaTxt + ', con 80% de transparencia. Borde amarillo: ' + (dist ? 'contorno del territorio' : 'lo marcado en el mapa') + '. Líneas punteadas: distritos vecinos.' + (imgMapa.teselas ? '' : ' Sin conexión: el mapa base no se pudo descargar.')), wC);
-      doc.text(notaMapa, xC, Math.max(yC + 2, bottom - notaMapa.length * 3.4));
-      /* páginas siguientes */
-      var mmPx = ancho / refW, y = top, hayPag = false;
-      function nueva() { doc.addPage('letter', 'landscape'); y = top; hayPag = true; }
-      nueva();
+      var W = 279.4, H = 215.9, M = 10, top = M + 8, bottom = H - M - 5, ancho = W - 2 * M;
+      /* ---------- página 1: encabezado, mapa y ficha lado a lado ---------- */
+      var xT = M;
+      if (logo) { var lh = 11, lw = lh * logo.r; doc.addImage(logo.u, 'PNG', M, top - 1, lw, lh, undefined, 'FAST'); xT = M + lw + 4; }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(16); doc.setTextColor(27, 27, 27); doc.text(pdfTxt(titulo), xT, top + 4);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(80, 92, 86); doc.text(doc.splitTextToSize(pdfTxt(sub), ancho - (xT - M))[0], xT, top + 9);
+      var yM = top + 13, gap = 5, wF = 76, wMap = ancho - wF - gap;
+      /* altura de las leyendas bajo el mapa, a lo ancho del mapa */
+      var leyMm = imgLey.map(function (b) { return Math.min(b.h * wMap / b.w, 26); });
+      var leyTot = leyMm.reduce(function (a, b) { return a + b + 1.5; }, 0);
+      var hMap = wMap * imgMapa.h / imgMapa.w, maxMap = bottom - yM - leyTot - 2;
+      var wMapR = wMap; if (hMap > maxMap) { wMapR = wMap * maxMap / hMap; hMap = maxMap; }
+      doc.addImage(imgMapa.c.toDataURL('image/jpeg', 0.9), 'JPEG', M, yM, wMapR, hMap, undefined, 'FAST');
+      doc.setDrawColor(158, 174, 153); doc.setLineWidth(0.25); doc.rect(M, yM, wMapR, hMap);
+      var yL = yM + hMap + 2;
+      imgLey.forEach(function (b, i) { var hh = leyMm[i], ww = Math.min(wMap, b.w * hh / b.h); doc.addImage(b.c.toDataURL('image/jpeg', 0.88), 'JPEG', M, yL, ww, hh, undefined, 'FAST'); yL += hh + 1.5; });
+      var xF = M + wMap + gap, hF = imgFicha.h * wF / imgFicha.w, wFR = wF, maxF = bottom - yM;
+      if (hF > maxF) { wFR = wF * maxF / hF; hF = maxF; }
+      doc.addImage(imgFicha.c.toDataURL('image/jpeg', 0.92), 'JPEG', xF, yM, wFR, hF, undefined, 'FAST');
+      /* ---------- páginas siguientes ---------- */
+      var mmPx = ancho / refW, y = top;
+      function nueva() { doc.addPage('letter', 'landscape'); y = top; }
+      if (bloques.length) nueva();
       var med = function (b) { var k = Math.min(1, ancho / (b.w * mmPx)), wmm = b.w * mmPx * k, hmm = b.h * mmPx * k, disp = bottom - top; if (hmm > disp) { wmm = wmm * disp / hmm; hmm = disp; } return [wmm, hmm]; };
       bloques.forEach(function (b, i) {
         var m = med(b), wmm = m[0], hmm = m[1];
-        /* el encabezado de un panel no se queda solo al pie de la página: va con el primer tramo de su tabla */
         var extra = b.junto && bloques[i + 1] ? med(bloques[i + 1])[1] + 3 : 0;
         if (y > top && y + hmm + extra > bottom) nueva();
         doc.addImage(b.c.toDataURL('image/jpeg', 0.86), 'JPEG', M, y, wmm, hmm, undefined, 'FAST');
@@ -40254,21 +40355,21 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
       });
       var n = doc.getNumberOfPages(), fecha = new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
       for (var p = 1; p <= n; p++) {
-        doc.setPage(p); doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(60, 72, 66);
-        doc.text(doc.splitTextToSize(pdfTxt('Consensus Estrategia · ' + TERR.nom + ' · ' + titulo + ' · ' + nombreF(S.f) + ' · ' + fecha), ancho)[0], M, M + 3);
-        doc.setDrawColor(158, 174, 153); doc.setLineWidth(0.2); doc.line(M, M + 5, W - M, M + 5);
-        doc.text(pdfTxt('Consensus Estrategia · Inteligencia de Datos y Análisis Electoral · Cómputos 2024 IEPC e INE · ' + TERR.nom + ''), M, H - M + 2);
+        doc.setPage(p); doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(60, 72, 66);
+        if (p > 1) { doc.text(doc.splitTextToSize(pdfTxt('Consensus Estrategia · ' + (titulo === TERR.nom || titulo === 'Todo Jalisco' ? titulo : TERR.nom + ' · ' + titulo) + ' · ' + nombreF(S.f) + ' · ' + fecha), ancho)[0], M, M + 3); doc.setDrawColor(158, 174, 153); doc.setLineWidth(0.2); doc.line(M, M + 5, W - M, M + 5); }
+        doc.text(pdfTxt('Consensus Estrategia · Inteligencia de Datos y Análisis Electoral · Cómputos 2024 IEPC e INE · cartografía INE' + (p === 1 ? ' · ' + fecha : '')), M, H - M + 2);
         doc.text('Página ' + p + ' de ' + n, W - M, H - M + 2, { align: 'right' });
       }
       doc.setProperties({ title: pdfTxt('Hoja de consulta · ' + titulo + ' · ' + TERR.nom), subject: 'Consensus Estrategia', creator: 'Consensus Estrategia' });
+      window.Jal_pdfUltimo = { archivo: archivo, paginas: n, vista: en3D ? '3D' : '2D', mapa: [imgMapa.w, imgMapa.h], ficha: [Math.round(imgFicha.w), Math.round(imgFicha.h)], leyendas: imgLey.length, bloques: bloques.length };
+      if (window.Jal_pdfPrueba) { window.Jal_pdfPrueba(doc.output('datauristring')); return; }
       doc.save(archivo);
-      window.Jal_pdfUltimo = { archivo: archivo, paginas: n, teselas: imgMapa.teselas, totalTeselas: imgMapa.total, zoom: imgMapa.z, bloques: bloques.length };
     }).catch(function (e) {
       if (window.console) console.error(e);
       alert('No se pudo generar el PDF: ' + (e && e.message ? e.message : e));
     }).then(restaura);
   }
-  window.Jal_pdf = function () { return pdfSeccion(); };
+window.Jal_pdf = function () { return pdfSeccion(); };
 
   /* =====================================================================
      F7 · PLAN OPERATIVO
@@ -40404,7 +40505,7 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
       if (window.CxReal) window.CxReal.cargar().then(function () { if (S.vista === 'panorama') pintaOperador(); else if (S.vista === 'mapa') pintaResumen(); });
       controles(); llenaSelInf(); marcaGlobal();
       $('#Jal_cargando').hidden = true;
-      $('#Jal_pie').textContent = 'Módulo Jal_ 2026-11-13.J4 (datos ' + D.version + '). Mapa seccional 2D/3D de todo Jalisco, clonado del mapa del Distrito 4 (M5, 2026-10-18). Datos incrustados en la página; funciona sin conexión salvo las teselas del mapa y las tipografías. Fuentes: cómputos por casilla 2024 local (IEPC Jalisco) y federal (INE) de los 20 distritos, cartografía seccional INE de la página Electoral y conteo censal INE 2024 de la lista nominal por edad y sexo de las 3,787 secciones del estado. Límites municipales en «Todo Jalisco»: INEGI, Marco Geoestadístico 2025, simplificados a unos 222 m (pueden no calzar exacto con el borde seccional del INE al acercarse a nivel de calle). Los puntos de territorio (tianguis, mercados, cruceros) existen solo para el Distrito 4 de Zapopan. En seis municipios, los polígonos del marco nuevo sin equivalencia publicada se agrupan en bloques municipales con dato agregado, rotulados en el mapa y en la ficha; el resto sin equivalencia queda «sin dato»: no se estima.';
+      $('#Jal_pie').textContent = 'Módulo Jal_ 2026-11-13.J5 (datos ' + D.version + '). Mapa seccional 2D/3D de todo Jalisco, clonado del mapa del Distrito 4 (M5, 2026-10-18). Datos incrustados en la página; funciona sin conexión salvo las teselas del mapa y las tipografías. Fuentes: cómputos por casilla 2024 local (IEPC Jalisco) y federal (INE) de los 20 distritos, cartografía seccional INE de la página Electoral y conteo censal INE 2024 de la lista nominal por edad y sexo de las 3,787 secciones del estado. Límites municipales en «Todo Jalisco»: INEGI, Marco Geoestadístico 2025, simplificados a unos 222 m (pueden no calzar exacto con el borde seccional del INE al acercarse a nivel de calle). Los puntos de territorio (tianguis, mercados, cruceros) existen solo para el Distrito 4 de Zapopan. En seis municipios, los polígonos del marco nuevo sin equivalencia publicada se agrupan en bloques municipales con dato agregado, rotulados en el mapa y en la ficha; el resto sin equivalencia queda «sin dato»: no se estima.';
       var v = 'panorama'; try { v = localStorage.getItem('Jal_vista') || 'panorama'; } catch (e) { }
       if (SUB_PEND) { v = SUB_PEND; SUB_PEND = null; }
       if (!document.getElementById('Jal_v-' + v)) v = 'panorama';
@@ -40467,6 +40568,9 @@ window.Jal_PARTIDAS_META = {"3892":"agregado municipal (5 secciones 2024)","3893
     ['change', 'click'].forEach(function (t) { APP.addEventListener(t, function (ev) { if (ev.target && ev.target.closest && ev.target.closest('.Jal_ctrl')) setTimeout(espejo, 0); }); });
     window.Jal_Sede = function () { if (D && FIJO[SEDE] && !(TERR.tipo === FIJO[SEDE].tipo && TERR.id === FIJO[SEDE].id)) { cambiaTerritorio(FIJO[SEDE]); window.dispatchEvent(new Event('resize')); } if (D && SEDE === 'D03F') { var se = document.getElementById('Jal_sel-eleccion'); if (se && se.value !== 'DF24' && [].some.call(se.options, function (o) { return o.value === 'DF24'; })) { se.value = 'DF24'; se.dispatchEvent(new Event('change', { bubbles: true })); } ELEC_SEDE = 'D03F'; espejo(); } };
     window.Jal_SedeActual = function () { return SEDE; };
+    var TIT_PREVIO = null;
+    window.addEventListener('beforeprint', function () { if (!D || !sedeDeseada()) return; TIT_PREVIO = document.title; var nomS = { Anl: 'Mapa de Análisis', D10Z: 'Distrito 10', D04Z: 'Distrito 4', D03F: 'Distrito 3 Fed: Yahualica' }[SEDE] || 'Mapa'; document.title = nomS + ' · ' + (S.sel.length ? nombreSel(S.sel) : S.fuera ? 'Sección ' + S.fuera : (TERR.tipo === 'jal' ? 'Todo Jalisco' : TERR.nom)) + ' · Consensus Estrategia'; });
+    window.addEventListener('afterprint', function () { if (TIT_PREVIO) { document.title = TIT_PREVIO; TIT_PREVIO = null; } });
     /* la sección marcada en el motor se refleja en el módulo anfitrión (histórico del Distrito 10) */
     function enlazaSede() {
       var A = SEDE === 'D10Z' ? window.D10Z_App : SEDE === 'D04Z' ? window.D04Z_App : SEDE === 'D03F' ? window.D03F_App : null;
